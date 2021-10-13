@@ -7,12 +7,12 @@ import Forms from './forms/Index';
 function Header() {
     return (
         <Router>
-            <div class="container">
-                <header class="d-flex justify-content-center py-3">
-                <ul class="nav nav-pills">
-                    <li class="nav-item"><Link to = "/">Home</Link></li>
-                    <li class="nav-item"><Link to = "/forms">Forms</Link></li>
-                    <li class="nav-item"><Link to = "/about">About</Link></li>
+            <div className="container">
+                <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+                <ul className="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+                    <li className="nav-link px-2 link-secondary"><Link to = "/">Home</Link></li>
+                    <li className="nav-link px-2 link-dark"><Link to = "/forms">Forms</Link></li>
+                    <li className="nav-link px-2 link-dark"><Link to = "/about">About</Link></li>
                 </ul>
                 </header>
                 <Route exact path = "/" component = {Home} />

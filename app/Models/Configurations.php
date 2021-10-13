@@ -5,7 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Table extends Model
+class Configurations extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'field_seq',
+        'is_mandatory',
+        'field_type'
+    ];
 }

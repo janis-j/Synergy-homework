@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 function List() {
+    const [posts, setposts] = useState();
+    const getDocuments = () => {
+            useEffect(()=>{
+            axios.get("forms")
+            .then(res=>{
+                console.log(res.data);
+                setposts(res.data);
+            })
+        },[])
+    };
+    getDocuments();
     return (
+        !posts ? ("No data found"):(
         <div>
-            <table class="table">
+            <table className="table">
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
@@ -14,29 +27,20 @@ function List() {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        <th></th>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-
-                    </tr>
+                    {
+                    posts.map((post, index)=>(
+                        <tr>
+                            <th key={index}>{index}</th>
+                            <td>{post.document_name}</td>
+                            <td>{post.created_at}</td>
+                            <td>{post.configurations.length}</td>
+                        </tr>
+                    ))
+                    }
                 </tbody>
                 </table>
         </div>
+        )
     );
 }
 
